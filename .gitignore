@@ -1,0 +1,20 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+todo.txt
+
+# dependencies
+backend/node_modules
+frontend/node_modules
+
+# production
+frontend/build
+backend/dist
+
+# misc
+.DS_Store
+backend/.env
+backend/.env.*
+
+frontend/.env
+frontend/.env.*
+
