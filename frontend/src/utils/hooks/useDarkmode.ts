@@ -5,7 +5,7 @@ import type { Mode } from '@/@types/theme'
 
 function useDarkMode(): [
     isEnabled: boolean,
-    onModeChange: (mode: Mode) => void
+    onModeChange: (mode: Mode) => void,
 ] {
     const mode = useAppSelector((state) => state.theme.mode)
     const { MODE_DARK, MODE_LIGHT } = THEME_ENUM

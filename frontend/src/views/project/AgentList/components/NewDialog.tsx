@@ -5,10 +5,7 @@ import Input from '@/components/ui/Input'
 import { FormItem, FormContainer } from '@/components/ui/Form'
 import { Field, Form, Formik, FieldProps } from 'formik'
 import { toggleNewDialog, useAppDispatch, useAppSelector } from '../store'
-import {
-    apiGetAnswerFromGPT,
-   
-} from '@/services/GptServices'
+import { apiGetAnswerFromGPT } from '@/services/GptServices'
 import { Alert, Card, InputGroup, Switcher } from '@/components/ui'
 import { HiArrowCircleRight } from 'react-icons/hi'
 import { AxiosError } from 'axios'
@@ -25,7 +22,7 @@ export type DialogLog = {
 const NewDialog = () => {
     const messageEndRef = useRef<HTMLDivElement>(null)
     const [dialogLogs, setDialogLogs] = useState<DialogLog[]>([])
-    
+
     const [reply, setReply] = useState('')
     const [errorMessage, setErrorMessage] = useTimeOutMessage()
     const [checked, setChecked] = useState(true)
@@ -53,7 +50,11 @@ const NewDialog = () => {
         try {
             let reply
             const { message } = values
-            const context = dialogLogs.map((c) => c.isUserQuestion ? `Human: ${c.text}` : `AI: ${c.text}`).join('\n')
+            const context = dialogLogs
+                .map((c) =>
+                    c.isUserQuestion ? `Human: ${c.text}` : `AI: ${c.text}`,
+                )
+                .join('\n')
             console.log(context)
             reply = await apiGetAnswerFromGPT({
                 context,
@@ -89,9 +90,9 @@ const NewDialog = () => {
     return (
         <Dialog
             isOpen={newDialog}
+            className="!w-[800px]"
             onClose={onDialogClose}
             onRequestClose={onDialogClose}
-            className="!w-[800px]"
         >
             <div className="flex justify-between mr-10">
                 <h4>Chat with Agent</h4>

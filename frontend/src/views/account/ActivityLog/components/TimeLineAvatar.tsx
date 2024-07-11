@@ -47,7 +47,7 @@ const TimelineAvatar = ({ data }: TimelineAvatar) => {
 
     const defaultAvatarProps: AvatarProps = useMemo(
         () => ({ size: 30, shape: 'circle' }),
-        []
+        [],
     )
 
     if (data && avatarType.includes(data.type)) {

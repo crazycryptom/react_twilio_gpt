@@ -18,19 +18,19 @@ const Log = () => {
     const dispatch = useAppDispatch()
     const logs = useAppSelector((state) => state.accountActivityLog.data.logs)
     const loading = useAppSelector(
-        (state) => state.accountActivityLog.data.loading
+        (state) => state.accountActivityLog.data.loading,
     )
     const loadMoreLoading = useAppSelector(
-        (state) => state.accountActivityLog.data.loadMoreLoading
+        (state) => state.accountActivityLog.data.loadMoreLoading,
     )
     const loadable = useAppSelector(
-        (state) => state.accountActivityLog.data.loadable
+        (state) => state.accountActivityLog.data.loadable,
     )
     const selectedType = useAppSelector(
-        (state) => state.accountActivityLog.data.selectedType
+        (state) => state.accountActivityLog.data.selectedType,
     )
     const activityIndex = useAppSelector(
-        (state) => state.accountActivityLog.data.activityIndex
+        (state) => state.accountActivityLog.data.activityIndex,
     )
 
     useEffect(() => {

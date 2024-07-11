@@ -15,9 +15,7 @@ const TrainAgent = () => {
 
     useEffect(() => {
         getAgent()
-        
     }, [])
-    
 
     // // Get agent information
     const getAgent = async () => {
@@ -27,13 +25,13 @@ const TrainAgent = () => {
                 url: `/agent/${id}`,
                 method: 'get',
             })
-            
+
             setAgent(response.data.data)
             const res = await ApiService.fetchData<any>({
                 url: `/upload/${id}`,
                 method: 'get',
             })
-           
+
             setUploadedFiles(res.data.data)
         } catch (error) {
             console.log(error)
@@ -44,15 +42,16 @@ const TrainAgent = () => {
     return (
         <Container className="h-full">
             <Loading loading={isPageLoading}>
-                {agent && 
-                <TrainAgentForm
-                    type="new"
-                    onFormSubmit={() => {}}
-                    onDiscard={() => {}}
-                    initialData={ agent }
-                    uploadedFileData={ uploadedFiles }
-                    setIsPageLoading={setIsPageLoading}
-                />}
+                {agent && (
+                    <TrainAgentForm
+                        type="new"
+                        initialData={agent}
+                        uploadedFileData={uploadedFiles}
+                        setIsPageLoading={setIsPageLoading}
+                        onFormSubmit={() => {}}
+                        onDiscard={() => {}}
+                    />
+                )}
             </Loading>
         </Container>
     )

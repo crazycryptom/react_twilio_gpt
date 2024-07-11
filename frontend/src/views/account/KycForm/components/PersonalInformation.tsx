@@ -193,12 +193,12 @@ const PersonalInformation = forwardRef<FormikRef, PersonForm>((props, ref) => {
                                 <div className="md:grid grid-cols-2 gap-4">
                                     <FormItem label="Email">
                                         <Field
+                                            disabled
                                             type="email"
                                             autoComplete="off"
                                             name="email"
                                             placeholder="Email"
                                             component={Input}
-                                            disabled
                                         />
                                     </FormItem>
 

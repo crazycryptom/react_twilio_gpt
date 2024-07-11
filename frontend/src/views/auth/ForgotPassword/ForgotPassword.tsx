@@ -1,4 +1,3 @@
-
 import ForgotPasswordForm from './ForgotPasswordForm'
 
 const ForgotPassword = () => {

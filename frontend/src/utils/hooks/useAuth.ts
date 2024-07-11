@@ -24,7 +24,7 @@ function useAuth() {
     const { token, signedIn } = useAppSelector((state) => state.auth.session)
 
     const signIn = async (
-        values: SignInCredential
+        values: SignInCredential,
     ): Promise<
         | {
               status: Status
@@ -34,7 +34,7 @@ function useAuth() {
     > => {
         try {
             const resp = await apiSignIn(values)
-           
+
             if (resp.data) {
                 const { token } = resp.data
                 dispatch(signInSuccess(token))
@@ -46,14 +46,16 @@ function useAuth() {
                                 userName: 'Anonymous',
                                 authority: ['USER'],
                                 email: '',
-                            }
-                        )
+                            },
+                        ),
                     )
                 }
                 const redirectUrl = query.get(REDIRECT_URL_KEY)
-                
+
                 navigate(
-                    redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath
+                    redirectUrl
+                        ? redirectUrl
+                        : appConfig.authenticatedEntryPath,
                 )
                 return {
                     status: 'success',
@@ -76,7 +78,6 @@ function useAuth() {
                 const { token } = resp.data
                 dispatch(signInSuccess(token))
                 if (resp.data.user) {
-                   
                     dispatch(
                         setUser(
                             resp.data.user || {
@@ -84,15 +85,17 @@ function useAuth() {
                                 userName: 'Anonymous',
                                 authority: ['USER'],
                                 email: '',
-                            }
-                        )
+                            },
+                        ),
                     )
                 }
                 const redirectUrl = query.get(REDIRECT_URL_KEY)
                 navigate(
-                    redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath
+                    redirectUrl
+                        ? redirectUrl
+                        : appConfig.authenticatedEntryPath,
                 )
-                
+
                 return {
                     status: 'success',
                     message: '',
@@ -116,7 +119,7 @@ function useAuth() {
                 lastName: '',
                 email: '',
                 authority: [],
-            })
+            }),
         )
         navigate(appConfig.unAuthenticatedEntryPath)
     }

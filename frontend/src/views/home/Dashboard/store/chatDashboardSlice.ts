@@ -4,8 +4,6 @@ import { apiGetDashboardData, apiGetTotalList } from '@/services/SalesService'
 import { ChatLogType } from '../components/ConversationList'
 import { GetSalesOrdersResponse } from '../../OrderList/store'
 
-
-
 type DashboardDataResponse = ChatLogType
 
 export type DashboardState = {
@@ -22,30 +20,28 @@ export const getDashboardData = createAsyncThunk(
     SLICE_NAME + '/getDashboardData',
     async () => {
         const response = await apiGetDashboardData<DashboardDataResponse>()
-        
+
         return response.data
-    }
+    },
 )
 
 export const getTotalList = createAsyncThunk(
     SLICE_NAME + '/getTotalList',
     async () => {
-        const response = await apiGetTotalList<
-            GetSalesOrdersResponse
-        >()
-        
+        const response = await apiGetTotalList<GetSalesOrdersResponse>()
+
         return response.data
-    }
+    },
 )
 
 const initialState: DashboardState = {
     startDate: dayjs(
-        dayjs().subtract(3, 'month').format('DD-MMM-YYYY, hh:mm A')
+        dayjs().subtract(3, 'month').format('DD-MMM-YYYY, hh:mm A'),
     ).unix(),
     endDate: dayjs(new Date()).unix(),
     loading: true,
     dashboardData: [],
-    totalList: []
+    totalList: [],
 }
 
 const DashboardSlice = createSlice({

@@ -15,7 +15,7 @@ export async function apiGetCrmCalendar<T>() {
 }
 
 export async function apiGetCrmCustomers<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/crm/customers',
@@ -32,7 +32,7 @@ export async function apiGetCrmCustomersStatistic<T>() {
 }
 
 export async function apPutCrmCustomer<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/crm/customers',
@@ -43,7 +43,7 @@ export async function apPutCrmCustomer<T, U extends Record<string, unknown>>(
 
 export async function apiGetCrmCustomerDetails<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(params: U) {
     return ApiService.fetchData<T>({
         url: '/crm/customer-details',
@@ -54,7 +54,7 @@ export async function apiGetCrmCustomerDetails<
 
 export async function apiDeleteCrmCustomer<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: '/crm/customer/delete',
@@ -64,7 +64,7 @@ export async function apiDeleteCrmCustomer<
 }
 
 export async function apiGetCrmMails<T, U extends Record<string, unknown>>(
-    params: U
+    params: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/crm/mails',
@@ -74,7 +74,7 @@ export async function apiGetCrmMails<T, U extends Record<string, unknown>>(
 }
 
 export async function apiGetCrmMail<T, U extends Record<string, unknown>>(
-    params: U
+    params: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/crm/mail',

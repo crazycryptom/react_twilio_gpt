@@ -12,9 +12,7 @@ import i18n from 'i18next'
 import { HiCheck } from 'react-icons/hi'
 import type { CommonProps } from '@/@types/common'
 
-const languageList = [
-    { label: 'English', value: 'en', flag: 'us' }
-]
+const languageList = [{ label: 'English', value: 'en', flag: 'us' }]
 
 const _LanguageSelector = ({ className }: CommonProps) => {
     const [loading, setLoading] = useState(false)

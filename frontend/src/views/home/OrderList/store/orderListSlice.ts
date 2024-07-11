@@ -40,8 +40,6 @@ export type SalesOrderListState = {
     deleteMode: 'single' | 'batch' | ''
     selectedRows: string[]
     selectedRow: string
-    
-    
 }
 
 export const SLICE_NAME = 'salesOrderList'
@@ -54,11 +52,8 @@ export const getOrders = createAsyncThunk(
             TableQueries
         >(data)
         return response.data
-    }
+    },
 )
-
-
-
 
 export const deleteOrders = async (data: { id: string | string[] }) => {
     const response = await apiDeleteSalesOrders<
@@ -111,7 +106,7 @@ const orderListSlice = createSlice({
             const currentState = current(state)
             if (currentState.selectedRows.includes(payload)) {
                 state.selectedRows = currentState.selectedRows.filter(
-                    (id) => id !== payload
+                    (id) => id !== payload,
                 )
             }
         },
@@ -126,7 +121,7 @@ const orderListSlice = createSlice({
                 state.tableData.total = action.payload.total
                 state.loading = false
             })
-            
+
             .addCase(getOrders.pending, (state) => {
                 state.loading = true
             })

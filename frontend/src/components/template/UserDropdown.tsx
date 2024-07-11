@@ -17,7 +17,7 @@ type DropdownList = {
 const dropdownItemList: DropdownList[] = []
 
 const _UserDropdown = ({ className }: CommonProps) => {
-    const user = useAppSelector(state => state.auth.user)
+    const user = useAppSelector((state) => state.auth.user)
 
     const { signOut } = useAuth()
 
@@ -42,9 +42,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                     <div className="py-2 px-3 flex items-center gap-2">
                         <Avatar shape="circle" icon={<HiOutlineUser />} />
                         <div>
-                            <div className="font-bold text-gray-900 dark:text-gray-100">
-                                
-                            </div>
+                            <div className="font-bold text-gray-900 dark:text-gray-100"></div>
                             <div className="text-xs">{user.email}</div>
                         </div>
                     </div>
@@ -56,8 +54,8 @@ const _UserDropdown = ({ className }: CommonProps) => {
                         eventKey={item.label}
                         className="mb-1 px-0"
                     >
-                        <Link 
-                            className="flex h-full w-full px-2" 
+                        <Link
+                            className="flex h-full w-full px-2"
                             to={item.path}
                         >
                             <span className="flex gap-2 items-center w-full">

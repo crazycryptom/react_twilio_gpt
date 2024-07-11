@@ -14,16 +14,16 @@ import {
 const OrderDeleteConfirmation = () => {
     const dispatch = useAppDispatch()
     const selectedRows = useAppSelector(
-        (state) => state.salesOrderList.data.selectedRows
+        (state) => state.salesOrderList.data.selectedRows,
     )
     const selectedRow = useAppSelector(
-        (state) => state.salesOrderList.data.selectedRow
+        (state) => state.salesOrderList.data.selectedRow,
     )
     const deleteMode = useAppSelector(
-        (state) => state.salesOrderList.data.deleteMode
+        (state) => state.salesOrderList.data.deleteMode,
     )
     const tableData = useAppSelector(
-        (state) => state.salesOrderList.data.tableData
+        (state) => state.salesOrderList.data.tableData,
     )
 
     const onDialogClose = () => {
@@ -52,7 +52,6 @@ const OrderDeleteConfirmation = () => {
                 await deleteOrders({ id: selectedRows })
                 deleteSucceed(true, selectedRows.length)
                 dispatch(setSelectedRows([]))
-                
             } catch (error) {
                 console.log(error)
             }
@@ -75,7 +74,7 @@ const OrderDeleteConfirmation = () => {
                 </Notification>,
                 {
                     placement: 'top-center',
-                }
+                },
             )
         }
     }
@@ -91,9 +90,7 @@ const OrderDeleteConfirmation = () => {
             onCancel={onDialogClose}
             onConfirm={onDelete}
         >
-            <p>
-                Are you sure you want to delete this log? 
-            </p>
+            <p>Are you sure you want to delete this log?</p>
         </ConfirmDialog>
     )
 }

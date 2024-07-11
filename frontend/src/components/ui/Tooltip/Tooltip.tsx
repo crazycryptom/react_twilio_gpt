@@ -16,8 +16,8 @@ import {
     useDismiss,
     useRole,
     useInteractions,
-    FloatingPortal
-  } from '@floating-ui/react';
+    FloatingPortal,
+} from '@floating-ui/react'
 
 export interface TooltipProps extends CommonProps {
     isOpen?: boolean
@@ -52,28 +52,28 @@ const Tooltip = (props: TooltipProps) => {
         middleware: [
             offset(7),
             flip({
-                fallbackAxisSideDirection: 'start'
+                fallbackAxisSideDirection: 'start',
             }),
-            shift()
-        ]
-    });
-    
-    const hover = useHover(context, { move: false });
-    const focus = useFocus(context);
-    const dismiss = useDismiss(context);
-    const role = useRole(context, { role: 'tooltip' });
-    
+            shift(),
+        ],
+    })
+
+    const hover = useHover(context, { move: false })
+    const focus = useFocus(context)
+    const dismiss = useDismiss(context)
+    const role = useRole(context, { role: 'tooltip' })
+
     const { getReferenceProps, getFloatingProps } = useInteractions([
         hover,
         focus,
         dismiss,
-        role
-    ]);
+        role,
+    ])
 
     return (
         <>
             <span
-                ref={refs.setReference} 
+                ref={refs.setReference}
                 {...getReferenceProps()}
                 className={classNames('tooltip-wrapper', wrapperClass)}
             >
@@ -81,11 +81,12 @@ const Tooltip = (props: TooltipProps) => {
             </span>
             <FloatingPortal>
                 {tooltipOpen && (
-                     <AnimatePresence>
+                    <AnimatePresence>
                         <motion.div
+                            ref={refs.setFloating}
                             className={classNames(
                                 defaultTooltipClass,
-                                className
+                                className,
                             )}
                             initial={{
                                 opacity: 0,
@@ -94,19 +95,18 @@ const Tooltip = (props: TooltipProps) => {
                             animate={
                                 tooltipOpen
                                     ? {
-                                        opacity: 1,
-                                        visibility: 'visible',
-                                    }
+                                          opacity: 1,
+                                          visibility: 'visible',
+                                      }
                                     : {
-                                        opacity: 0,
-                                        visibility: 'hidden',
-                                    }
+                                          opacity: 0,
+                                          visibility: 'hidden',
+                                      }
                             }
                             transition={{
                                 duration: 0.15,
                                 type: 'tween',
                             }}
-                            ref={refs.setFloating}
                             style={floatingStyles}
                             {...getFloatingProps()}
                         >

@@ -17,7 +17,7 @@ const navigationIcon: NavigationIcons = {
     call: <HiOutlinePhoneOutgoing />,
     agent: <HiOutlineChatAlt />,
     profile: <HiOutlineUserCircle />,
-    payment: <HiOutlineCurrencyDollar  />,
+    payment: <HiOutlineCurrencyDollar />,
 }
 
 export default navigationIcon

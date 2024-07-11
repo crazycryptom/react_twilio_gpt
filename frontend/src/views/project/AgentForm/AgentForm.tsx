@@ -18,7 +18,6 @@ type InitialData = {
     name?: string
     organizationName?: string
     description?: string
-   
 }
 
 export type FormModel = Omit<InitialData, 'tags'> & {
@@ -43,7 +42,6 @@ const { useUniqueId } = hooks
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Agent Name Required'),
-    
 })
 
 const AgentForm = forwardRef<FormikRef, AgentForm>((props, ref) => {
@@ -67,12 +65,11 @@ const AgentForm = forwardRef<FormikRef, AgentForm>((props, ref) => {
                 </Notification>,
                 {
                     placement: 'top-center',
-                }
+                },
             )
         } catch (error) {
             console.log(error)
         }
-        
     }
 
     return (
@@ -104,9 +101,9 @@ const AgentForm = forwardRef<FormikRef, AgentForm>((props, ref) => {
                                             size="sm"
                                             className="ltr:mr-3 rtl:ml-3"
                                             type="button"
-                                            onClick={() => onDiscard?.()}
                                             variant="solid"
                                             color="red-500"
+                                            onClick={() => onDiscard?.()}
                                         >
                                             Back
                                         </Button>

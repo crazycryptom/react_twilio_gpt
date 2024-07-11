@@ -33,12 +33,14 @@ const BasicInformationFields = (props: BasicInformationFields) => {
                     name="name"
                     placeholder="Agent Name"
                     component={Input}
-                    
                 />
             </FormItem>
             <FormItem
                 label="Organization Name"
-                invalid={(errors.organizationName && touched.organizationName) as boolean}
+                invalid={
+                    (errors.organizationName &&
+                        touched.organizationName) as boolean
+                }
                 errorMessage={errors.organizationName}
             >
                 <Field

@@ -24,7 +24,7 @@ const BatchDeleteButton = () => {
 
 const OrdersTableTools = () => {
     const selectedRows = useAppSelector(
-        (state) => state.salesOrderList.data.selectedRows
+        (state) => state.salesOrderList.data.selectedRows,
     )
     return (
         <div className="flex flex-col lg:flex-row lg:items-center gap-4">

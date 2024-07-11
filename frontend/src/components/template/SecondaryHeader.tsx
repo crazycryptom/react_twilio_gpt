@@ -15,7 +15,7 @@ const SecondaryHeader = (props: SecondaryHeaderProps) => {
     const navMode = useAppSelector((state) => state.theme.navMode)
     const themeColor = useAppSelector((state) => state.theme.themeColor)
     const primaryColorLevel = useAppSelector(
-        (state) => state.theme.primaryColorLevel
+        (state) => state.theme.primaryColorLevel,
     )
     const userAuthority = useAppSelector((state) => state.auth.user.authority)
 
@@ -35,13 +35,13 @@ const SecondaryHeader = (props: SecondaryHeaderProps) => {
                     className={classNames(
                         'h-16 flex items-center',
                         headerColor(),
-                        className
+                        className,
                     )}
                 >
                     <div
                         className={classNames(
                             'flex items-center px-4',
-                            contained && 'container mx-auto'
+                            contained && 'container mx-auto',
                         )}
                     >
                         <HorizontalMenuContent

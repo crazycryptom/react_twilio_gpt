@@ -38,7 +38,7 @@ const MenuItem = forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
         isActive && menuItemActiveClass,
         disabled && disabledClass,
         !disabled && menuItemHoverClass,
-        className
+        className,
     )
 
     const hanldeOnClick = (e: MouseEvent) => {

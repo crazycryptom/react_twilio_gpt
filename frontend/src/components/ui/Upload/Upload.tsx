@@ -24,7 +24,6 @@ export interface UploadProps extends CommonProps {
     uploadLimit?: number
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field?: any
-    
 }
 
 const filesToArray = (files: File[]) =>
@@ -33,7 +32,6 @@ const filesToArray = (files: File[]) =>
 
 const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
     const {
-       
         accept,
         beforeUpload,
         disabled = false,
@@ -71,7 +69,7 @@ const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
             </Notification>,
             {
                 placement: 'top-center',
-            }
+            },
         )
     }
 
@@ -187,12 +185,12 @@ const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
         draggable && !disabled && `hover:${draggableEventFeedbackClass}`,
         draggable && disabled && 'disabled',
         dragOver && draggableEventFeedbackClass,
-        className
+        className,
     )
 
     const uploadInputClass = classNames(
         'upload-input',
-        draggable && `draggable`
+        draggable && `draggable`,
     )
 
     return (
@@ -206,7 +204,6 @@ const Upload = forwardRef<HTMLDivElement, UploadProps>((props, ref) => {
                 <input
                     ref={fileInputField}
                     className={uploadInputClass}
-                   
                     type="file"
                     disabled={disabled}
                     multiple={multiple}

@@ -26,8 +26,6 @@ import type {
     Row,
 } from '@/components/shared/DataTable'
 
-
-
 type ChatColumnProps = {
     row: ChatLogType
 }
@@ -73,12 +71,12 @@ const OrdersTable = () => {
     const dispatch = useAppDispatch()
 
     const { pageIndex, pageSize, sort, total } = useAppSelector(
-        (state) => state.salesOrderList.data.tableData
+        (state) => state.salesOrderList.data.tableData,
     )
     const loading = useAppSelector((state) => state.salesOrderList.data.loading)
 
     const data = useAppSelector((state) => state.salesOrderList.data.orderList)
-    
+
     const fetchData = useCallback(() => {
         console.log('{ pageIndex, pageSize, sort, query }', {
             pageIndex,
@@ -88,7 +86,6 @@ const OrdersTable = () => {
         dispatch(getOrders({ pageIndex, pageSize, sort }))
     }, [dispatch, pageIndex, pageSize, sort])
 
-   
     useEffect(() => {
         dispatch(setSelectedRows([]))
         fetchData()
@@ -102,20 +99,17 @@ const OrdersTable = () => {
 
     const tableData = useMemo(
         () => ({ pageIndex, pageSize, sort, total }),
-        [pageIndex, pageSize, sort, total]
+        [pageIndex, pageSize, sort, total],
     )
 
     const columns: ColumnDef<ChatLogType>[] = useMemo(
         () => [
-            
             {
                 header: 'Date',
                 accessorKey: 'date',
                 cell: (props) => {
                     const row = props.row.original
-                    return (
-                        <span>{dayjs(row.date).format('DD/MM/YYYY')}</span>
-                    )
+                    return <span>{dayjs(row.date).format('DD/MM/YYYY')}</span>
                 },
             },
             {
@@ -126,14 +120,14 @@ const OrdersTable = () => {
                 header: 'Twilio Number',
                 accessorKey: 'twilioNumber',
             },
-            
+
             {
                 header: 'Action',
                 id: 'action',
                 cell: (props) => <ActionColumn row={props.row.original} />,
             },
         ],
-        []
+        [],
     )
 
     const onPaginationChange = (page: number) => {
@@ -176,7 +170,7 @@ const OrdersTable = () => {
                 dispatch(setSelectedRows([]))
             }
         },
-        [dispatch]
+        [dispatch],
     )
 
     return (

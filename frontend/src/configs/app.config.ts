@@ -1,4 +1,3 @@
-
 export type AppConfig = {
     apiPrefix: string
     authenticatedEntryPath: string

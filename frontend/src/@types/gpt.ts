@@ -1,4 +1,4 @@
-import { DialogLog } from "@/views/project/AgentList/components/NewDialog"
+import { DialogLog } from '@/views/project/AgentList/components/NewDialog'
 
 export type Question = {
     context: string

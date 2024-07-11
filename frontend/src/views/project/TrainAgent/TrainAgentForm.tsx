@@ -6,30 +6,20 @@ import {
     Input,
     Tooltip,
 } from '@/components/ui'
-import {
-    Field,
-    Form,
-    Formik,
-    FormikProps,
-} from 'formik'
+import { Field, Form, Formik, FormikProps } from 'formik'
 import { forwardRef, useEffect, useState, useRef, ChangeEvent } from 'react'
 import { apiGetQAList } from '@/services/GptServices'
 import { apiUpdateAgent, apiTrainAgent } from '@/services/AgentService'
 import { Link, useNavigate } from 'react-router-dom'
 import ApiService from '@/services/ApiService'
-import {
-    HiArrowNarrowLeft,
-    HiOutlineTrash,
-} from 'react-icons/hi'
+import { HiArrowNarrowLeft, HiOutlineTrash } from 'react-icons/hi'
 import { BusinessInfo, SiteUrls } from '@/@types/gpt'
 import toast from '@/components/ui/toast'
 import Notification from '@/components/ui/Notification'
 import { ConfirmDialog, Loading } from '@/components/shared'
 import * as Yup from 'yup'
 import { motion } from 'framer-motion'
-import {
-    AgentInformation,
-} from '../AgentList/store'
+import { AgentInformation } from '../AgentList/store'
 import CommonSpinner from '@/components/ui/Spinner/CommonSpinner'
 import Table from '@/components/ui/Table/Table'
 import THead from '@/components/ui/Table/THead'
@@ -231,7 +221,10 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                 ) {
                     formData.append('file', files[0])
                     formData.append('title', title)
-                    formData.append('idPrefix', `doc${uploadedFiles.length + 1}`)
+                    formData.append(
+                        'idPrefix',
+                        `doc${uploadedFiles.length + 1}`,
+                    )
 
                     if (title.trim() === '') {
                         setErrorMessage('Title is required')
@@ -295,7 +288,10 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
         }
     }
 
-    const handleDelete = async (fileId: string, setSubmitting: SetSubmitting) => {
+    const handleDelete = async (
+        fileId: string,
+        setSubmitting: SetSubmitting,
+    ) => {
         setSubmitting(true)
         try {
             const res = await ApiService.fetchData<any>({
@@ -322,8 +318,8 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                 size="sm"
                 className="ltr:mr-3 rtl:ml-3"
                 variant="solid"
-                onClick={() => onDiscard?.()}
                 color="gray-500"
+                onClick={() => onDiscard?.()}
             >
                 <HiArrowNarrowLeft />
             </Button>
@@ -425,12 +421,12 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                                             <Field
                                                 name="upload"
                                                 type="file"
+                                                className="mb-2"
                                                 onChange={(e: any) => {
                                                     setFiles([
                                                         e.target.files[0],
                                                     ])
                                                 }}
-                                                className="mb-2"
                                             />
                                         </FormItem>
 
@@ -465,6 +461,7 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                                                         type="text"
                                                         placeholder="Business Information, Transactions, Customers, SalesReport, etc."
                                                         value={title}
+                                                        component={Input}
                                                         onChange={(e: any) => {
                                                             setTitle(
                                                                 e.target.value,
@@ -482,7 +479,6 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                                                                 )
                                                             }
                                                         }}
-                                                        component={Input}
                                                     />
                                                 </FormItem>
                                                 {errorMessage && (
@@ -531,53 +527,82 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                                                             {uploadedFiles.map(
                                                                 (file, i) => (
                                                                     <>
-                                                                    <Tr key={i}>
-                                                                        <Td>
-                                                                            {
-                                                                                file.fileOriginalName
+                                                                        <Tr
+                                                                            key={
+                                                                                i
                                                                             }
-                                                                        </Td>
-                                                                        <Td>
-                                                                            {
-                                                                                file.title
+                                                                        >
+                                                                            <Td>
+                                                                                {
+                                                                                    file.fileOriginalName
+                                                                                }
+                                                                            </Td>
+                                                                            <Td>
+                                                                                {
+                                                                                    file.title
+                                                                                }
+                                                                            </Td>
+                                                                            <Td>
+                                                                                {
+                                                                                    file.idPrefix
+                                                                                }
+                                                                            </Td>
+                                                                            <Td>
+                                                                                <Tooltip title="Delete File">
+                                                                                    <span
+                                                                                        className="cursor-pointer p-2 hover:text-red-500"
+                                                                                        onClick={() =>
+                                                                                            // handleDelete(
+                                                                                            //     file._id,
+                                                                                            // )
+                                                                                            setIsConfirmOpen(
+                                                                                                true,
+                                                                                            )
+                                                                                        }
+                                                                                    >
+                                                                                        <HiOutlineTrash />
+                                                                                    </span>
+                                                                                </Tooltip>
+                                                                            </Td>
+                                                                        </Tr>
+                                                                        <ConfirmDialog
+                                                                            key={`#${i}`}
+                                                                            isOpen={
+                                                                                isConfirmOpen
                                                                             }
-                                                                        </Td>
-                                                                        <Td>
-                                                                            {
-                                                                                file.idPrefix
+                                                                            type="danger"
+                                                                            title="Delete CSV file"
+                                                                            confirmButtonColor="red-600"
+                                                                            onClose={
+                                                                                hanldeConfirmClose
                                                                             }
-                                                                        </Td>
-                                                                        <Td>
-                                                                            <Tooltip title="Delete File">
-                                                                                <span
-                                                                                    className="cursor-pointer p-2 hover:text-red-500"
-                                                                                    onClick={() =>
-                                                                                        // handleDelete(
-                                                                                        //     file._id,
-                                                                                        // )
-                                                                                        setIsConfirmOpen(true)
-                                                                                    }
-                                                                                >
-                                                                                    <HiOutlineTrash />
-                                                                                </span>
-                                                                            </Tooltip>
-                                                                        </Td>
-                                                                    </Tr>
-                                                                    <ConfirmDialog
-                                                                    key={`#${i}`}
-                                                                    isOpen={isConfirmOpen}
-                                                                    type="danger"
-                                                                    title="Delete CSV file"
-                                                                    confirmButtonColor="red-600"
-                                                                    onClose={hanldeConfirmClose}
-                                                                    onRequestClose={hanldeConfirmClose}
-                                                                    onCancel={hanldeConfirmClose}
-                                                                    onConfirm={() => handleDelete(file._id, setSubmitting)}
-                                                                >
-                                                                    <p>Are you sure you want to delete this file?</p>
-                                                                </ConfirmDialog>
-                                                                </>
-                                                                )
+                                                                            onRequestClose={
+                                                                                hanldeConfirmClose
+                                                                            }
+                                                                            onCancel={
+                                                                                hanldeConfirmClose
+                                                                            }
+                                                                            onConfirm={() =>
+                                                                                handleDelete(
+                                                                                    file._id,
+                                                                                    setSubmitting,
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <p>
+                                                                                Are
+                                                                                you
+                                                                                sure
+                                                                                you
+                                                                                want
+                                                                                to
+                                                                                delete
+                                                                                this
+                                                                                file?
+                                                                            </p>
+                                                                        </ConfirmDialog>
+                                                                    </>
+                                                                ),
                                                             )}
                                                         </>
                                                     )}
@@ -672,7 +697,6 @@ const TrainAgentForm = forwardRef<FormikRef, TrainAgentForm>((props, ref) => {
                                 </Button>
                             </div> */}
                         </FormContainer>
-                        
                     </Form>
                 )}
             </Formik>

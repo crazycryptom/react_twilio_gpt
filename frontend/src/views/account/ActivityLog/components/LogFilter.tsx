@@ -41,7 +41,7 @@ const CategoryTitle = ({ children, className }: CategoryTitleProps) => {
         <h6
             className={classNames(
                 'text-gray-900 uppercase tracking-wide font-semibold text-sm lg:text-xs',
-                className
+                className,
             )}
         >
             {children}
@@ -52,10 +52,10 @@ const CategoryTitle = ({ children, className }: CategoryTitleProps) => {
 const LogFilter = () => {
     const dispatch = useAppDispatch()
     const selectedType = useAppSelector(
-        (state) => state.accountActivityLog.data.selectedType
+        (state) => state.accountActivityLog.data.selectedType,
     )
     const activityIndex = useAppSelector(
-        (state) => state.accountActivityLog.data.activityIndex
+        (state) => state.accountActivityLog.data.activityIndex,
     )
 
     const onFilterChange = useCallback(
@@ -66,7 +66,7 @@ const LogFilter = () => {
             }
             dispatch(setSelected(selected))
         },
-        [dispatch, activityIndex]
+        [dispatch, activityIndex],
     )
 
     const { larger } = useResponsive()
@@ -109,15 +109,13 @@ const LogFilter = () => {
 
     return (
         <div>
-            {
-                larger.md ? (
-                    <Affix className="hidden lg:block" offset={80}>
-                        {renderLogFilterContent()}
-                    </Affix>
-                ) 
-                : 
+            {larger.md ? (
+                <Affix className="hidden lg:block" offset={80}>
+                    {renderLogFilterContent()}
+                </Affix>
+            ) : (
                 renderLogFilterContent()
-            }
+            )}
         </div>
     )
 }

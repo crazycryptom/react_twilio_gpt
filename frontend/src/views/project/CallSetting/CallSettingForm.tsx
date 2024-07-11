@@ -350,6 +350,7 @@ const CallSettingForm = () => {
                             <label>Your Phone number</label>
                             <div className="sm:block lg:flex">
                                 <Input
+                                    disabled
                                     type="text"
                                     placeholder=""
                                     className="mt-3 mr-5 sm:w-full lg:w-[50%]"
@@ -357,7 +358,6 @@ const CallSettingForm = () => {
                                     onChange={(e) =>
                                         setNumberToValidate(e.target.value)
                                     }
-                                    disabled
                                 />
                                 <Button
                                     size="sm"

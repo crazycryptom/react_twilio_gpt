@@ -22,7 +22,7 @@ const Categories = ({
                         <Chart
                             donutTitle={`${data.data.reduce(
                                 (a, b) => a + b,
-                                0
+                                0,
                             )}`}
                             donutText="Product Sold"
                             series={data.data}

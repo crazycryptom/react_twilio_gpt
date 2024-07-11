@@ -21,7 +21,7 @@ export interface DateTableProps extends CommonProps, MonthBaseProps {
     onDayKeyDown: (
         monthIndex: number,
         payload: DayKeydownPayload,
-        event: React.KeyboardEvent<HTMLButtonElement>
+        event: React.KeyboardEvent<HTMLButtonElement>,
     ) => void
     labelFormat?: { month: string; year: string }
     weekdayLabelFormat?: string
@@ -99,14 +99,14 @@ const DateTable = (props: DateTableProps) => {
                         renderCenter={dateViewCount > 1}
                         onNext={() =>
                             onMonthChange(
-                                dayjs(month).add(paginateBy, 'months').toDate()
+                                dayjs(month).add(paginateBy, 'months').toDate(),
                             )
                         }
                         onPrevious={() =>
                             onMonthChange(
                                 dayjs(month)
                                     .subtract(paginateBy, 'months')
-                                    .toDate()
+                                    .toDate(),
                             )
                         }
                     >
@@ -115,11 +115,11 @@ const DateTable = (props: DateTableProps) => {
                                 className={classNames(pickerHeaderLabelClass)}
                                 disabled={!enableHeaderLabel}
                                 tabIndex={index > 0 ? -1 : 0}
+                                type="button"
                                 onClick={() => onNextLevel('month')}
                                 onMouseDown={(event) =>
                                     preventFocus && event.preventDefault()
                                 }
-                                type="button"
                             >
                                 {formatMonthLabel({
                                     month: monthDate,
@@ -131,11 +131,11 @@ const DateTable = (props: DateTableProps) => {
                                 className={classNames(pickerHeaderLabelClass)}
                                 disabled={!enableHeaderLabel}
                                 tabIndex={index > 0 ? -1 : 0}
+                                type="button"
                                 onClick={() => onNextLevel('year')}
                                 onMouseDown={(event) =>
                                     preventFocus && event.preventDefault()
                                 }
-                                type="button"
                             >
                                 {formatMonthLabel({
                                     month: monthDate,

@@ -23,7 +23,7 @@ export async function apiGetAccountSettingBillingData<T>() {
 
 export async function apiGetAccountInvoiceData<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(params: U) {
     return ApiService.fetchData<T>({
         url: '/account/invoice',
@@ -34,7 +34,7 @@ export async function apiGetAccountInvoiceData<
 
 export async function apiGetAccountLogData<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: '/account/log',

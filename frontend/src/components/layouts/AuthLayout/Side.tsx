@@ -33,7 +33,8 @@ const Side = ({ children, content, ...rest }: SideProps) => {
                         </div> */}
                     </div>
                     <p className="text-lg text-white opacity-80">
-                        Elstar comes with a complete set of flexible and reliable Agents which are powered by AI technology.
+                        Elstar comes with a complete set of flexible and
+                        reliable Agents which are powered by AI technology.
                     </p>
                 </div>
                 <span className="text-white">

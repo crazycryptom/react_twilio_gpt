@@ -9,7 +9,7 @@ injectReducer('salesOrderList', reducer)
 
 const ChatLogList = ({ className }: { className: string }) => {
     return (
-        <Card  className={className} bodyClass="h-full">
+        <Card className={className} bodyClass="h-full">
             <div className="lg:flex items-center justify-between mb-4">
                 <h4 className="mb-4 lg:mb-0">Chat List</h4>
                 <OrdersTableTools />

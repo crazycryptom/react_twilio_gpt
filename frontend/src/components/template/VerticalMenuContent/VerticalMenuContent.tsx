@@ -109,7 +109,7 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
                                         direction={direction}
                                         onLinkClick={onMenuItemClick}
                                     />
-                                )
+                                ),
                             )}
                         </MenuGroup>
                     </AuthorityCheck>

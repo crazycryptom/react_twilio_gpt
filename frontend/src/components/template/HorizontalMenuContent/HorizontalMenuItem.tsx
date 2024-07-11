@@ -28,12 +28,17 @@ const HorizontalMenuItem = ({
 
     const itemTitle = t(translateKey, title)
 
-    const renderIcon = icon && <span className="text-2xl">{navigationIcon[icon]}</span>
+    const renderIcon = icon && (
+        <span className="text-2xl">{navigationIcon[icon]}</span>
+    )
 
     return (
         <>
             {path && isLink ? (
-                <HorizontalMenuNavLink path={path} isExternalLink={isExternalLink}>
+                <HorizontalMenuNavLink
+                    path={path}
+                    isExternalLink={isExternalLink}
+                >
                     <MenuItem variant={manuVariant}>
                         <span className="flex items-center gap-2">
                             {renderIcon}

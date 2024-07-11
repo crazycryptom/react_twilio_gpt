@@ -1,15 +1,20 @@
-import { ConfirmDialog } from "@/components/shared"
-import { deleteSuccessAgent, toggleDeleteConfirmation, useAppDispatch, useAppSelector } from "../store"
-import ApiService from "@/services/ApiService"
+import { ConfirmDialog } from '@/components/shared'
+import {
+    deleteSuccessAgent,
+    toggleDeleteConfirmation,
+    useAppDispatch,
+    useAppSelector,
+} from '../store'
+import ApiService from '@/services/ApiService'
 
 const AgentDeleteConfirmation = () => {
     const dispatch = useAppDispatch()
 
     const dialogOpen = useAppSelector(
-        state => state.agentList.data.deleteConfirmation
+        (state) => state.agentList.data.deleteConfirmation,
     )
     const selectedAgent = useAppSelector(
-        state => state.agentList.data.selectedAgent
+        (state) => state.agentList.data.selectedAgent,
     )
     const onDialogClose = () => {
         dispatch(toggleDeleteConfirmation(false))
@@ -19,9 +24,9 @@ const AgentDeleteConfirmation = () => {
         dispatch(deleteSuccessAgent(selectedAgent))
         dispatch(toggleDeleteConfirmation(false))
         const response = await ApiService.fetchData<void>({
-            url: `/agent/${selectedAgent}`, 
+            url: `/agent/${selectedAgent}`,
             method: 'delete',
-        });
+        })
     }
 
     return (
@@ -35,12 +40,9 @@ const AgentDeleteConfirmation = () => {
             onCancel={onDialogClose}
             onConfirm={onDelete}
         >
-            <p>
-                Are you sure you want to delete this agent? 
-            </p>
+            <p>Are you sure you want to delete this agent?</p>
         </ConfirmDialog>
     )
 }
 
 export default AgentDeleteConfirmation
-

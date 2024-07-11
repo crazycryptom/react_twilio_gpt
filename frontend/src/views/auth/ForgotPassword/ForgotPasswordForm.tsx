@@ -33,7 +33,7 @@ const ForgotPasswordForm = (props: ForgotPasswordFormProps) => {
 
     const onSendMail = async (
         values: ForgotPasswordFormSchema,
-        setSubmitting: (isSubmitting: boolean) => void
+        setSubmitting: (isSubmitting: boolean) => void,
     ) => {
         setSubmitting(true)
         try {
@@ -47,7 +47,7 @@ const ForgotPasswordForm = (props: ForgotPasswordFormProps) => {
             console.log(errors)
             setMessage(
                 (errors as AxiosError<{ message: string }>)?.response?.data
-                    ?.message || (errors as Error).toString()
+                    ?.message || (errors as Error).toString(),
             )
             setSubmitting(false)
         }

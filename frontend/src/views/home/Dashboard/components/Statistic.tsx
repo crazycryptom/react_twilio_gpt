@@ -77,8 +77,10 @@ const Statistic = ({ data = {} }: StatisticProps) => {
                 data={{ value: totalCustomers, growShrink: 10 }}
                 label="Total Customers"
             />
-            <StatisticCard data={{ value: totalMessages, growShrink: 10 }} label="Total Messages" />
-            
+            <StatisticCard
+                data={{ value: totalMessages, growShrink: 10 }}
+                label="Total Messages"
+            />
         </div>
     )
 }

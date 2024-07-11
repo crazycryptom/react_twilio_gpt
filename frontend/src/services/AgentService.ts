@@ -2,10 +2,9 @@ import { QA } from '@/@types/gpt'
 import ApiService from './ApiService'
 
 //create agent
-export async function apiCreateAgent<
-    T,
-    U extends Record<string, unknown>
->(data: U) {
+export async function apiCreateAgent<T, U extends Record<string, unknown>>(
+    data: U,
+) {
     return ApiService.fetchData<T>({
         url: '/agent',
         method: 'post',
@@ -13,24 +12,25 @@ export async function apiCreateAgent<
     })
 }
 
-// update agent 
-export async function apiTrainAgent(agentId: string, data: {businessInfo: string, siteUrls: string, qaList: QA[]}) {
-    return ApiService.fetchData({   
+// update agent
+export async function apiTrainAgent(
+    agentId: string,
+    data: { businessInfo: string; siteUrls: string; qaList: QA[] },
+) {
+    return ApiService.fetchData({
         url: `/agent/${agentId}/qalist`,
         method: 'post',
-        data
+        data,
     })
 }
 
 export async function apiUpdateAgent(agentId: string, updatedData: any) {
-    return ApiService.fetchData({   
+    return ApiService.fetchData({
         url: `/agent/${agentId}`,
         method: 'put',
-        data: updatedData
+        data: updatedData,
     })
 }
-
-
 
 export async function apiGetProducts<T>() {
     return ApiService.fetchData<T>({
@@ -47,7 +47,7 @@ export async function apiGetChats<T>() {
 
 export async function apiDeleteSalesProducts<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: '/agent',
@@ -57,7 +57,7 @@ export async function apiDeleteSalesProducts<
 }
 
 export async function apiGetSalesProduct<T, U extends Record<string, unknown>>(
-    params: U
+    params: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/sales/product',
@@ -67,7 +67,7 @@ export async function apiGetSalesProduct<T, U extends Record<string, unknown>>(
 }
 
 export async function apiPutSalesProduct<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/sales/products/update',
@@ -75,9 +75,3 @@ export async function apiPutSalesProduct<T, U extends Record<string, unknown>>(
         data,
     })
 }
-
-
-
-
-
-

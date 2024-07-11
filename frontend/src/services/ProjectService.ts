@@ -8,7 +8,7 @@ export async function apiGetProjectDashboardData<T>() {
 }
 
 export async function apiGetProjectList<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/project/list',
@@ -18,7 +18,7 @@ export async function apiGetProjectList<T, U extends Record<string, unknown>>(
 }
 
 export async function apiPutProjectList<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/project/list/add',

@@ -1,8 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import reducers, {
-    SLICE_NAME,
-    DashboardState,
-} from './chatDashboardSlice'
+import reducers, { SLICE_NAME, DashboardState } from './chatDashboardSlice'
 import { useSelector } from 'react-redux'
 
 import type { TypedUseSelectorHook } from 'react-redux'

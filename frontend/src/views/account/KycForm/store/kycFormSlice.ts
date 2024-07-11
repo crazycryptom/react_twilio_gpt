@@ -15,7 +15,6 @@ export type PersonalInformation = {
     zipCode: string
 }
 
-
 export type KycFormState = {
     personalInformation: PersonalInformation
 }
@@ -48,12 +47,15 @@ const kycFormSlice = createSlice({
     initialState,
     reducers: {
         setPerson: (state, action) => {
-            state.personalInformation = { ...state.personalInformation, ...action.payload }
+            state.personalInformation = {
+                ...state.personalInformation,
+                ...action.payload,
+            }
         },
     },
     extraReducers: (builder) => {
         builder.addCase(getForm.fulfilled, (state, action) => {
-            state.personalInformation = action.payload 
+            state.personalInformation = action.payload
         })
     },
 })

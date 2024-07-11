@@ -5,18 +5,15 @@ import {
     HiOutlineChat,
     HiOutlineBookOpen,
 } from 'react-icons/hi'
-const { Tr, Th, Td, THead, TBody } = Table
 import {
     AgentInformation,
     setSelectedAgent,
     toggleDeleteConfirmation,
-} from '../store'
-import {
-    toggleNewDialog,
-    useAppDispatch,
-} from '../store'
+ toggleNewDialog, useAppDispatch } from '../store'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from '@/components/ui'
+
+const { Tr, Th, Td, THead, TBody } = Table
 
 export type TableDataProps = {
     agents: AgentInformation[]
@@ -37,7 +34,7 @@ const AgentListTable = ({ agents }: TableDataProps) => {
     }
 
     const handleTrainForm = (agentId: string) => {
-            navigate(`/home/project/train-agent?id=${agentId}`)
+        navigate(`/home/project/train-agent?id=${agentId}`)
     }
 
     const handleEditAgent = (i: number) => {
@@ -48,7 +45,7 @@ const AgentListTable = ({ agents }: TableDataProps) => {
         <div>
             <Table>
                 <THead>
-                    <Tr >
+                    <Tr>
                         <Th>Name</Th>
                         <Th>Organization Name</Th>
                         <Th>Description</Th>
@@ -79,7 +76,9 @@ const AgentListTable = ({ agents }: TableDataProps) => {
                                                 <span
                                                     className="cursor-pointer p-2 hover:text-blue-500"
                                                     onClick={() =>
-                                                        handleTrainForm(agent._id)
+                                                        handleTrainForm(
+                                                            agent._id,
+                                                        )
                                                     }
                                                 >
                                                     <HiOutlineBookOpen />

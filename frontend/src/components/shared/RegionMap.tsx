@@ -41,7 +41,7 @@ const { MODE_DARK } = THEME_ENUM
 const getHighlightedRegion = (
     name: unknown,
     data: MapDataProp,
-    defaultMapColor: string
+    defaultMapColor: string,
 ) => {
     if (data.length > 0 || name) {
         for (let i = 0; i < data.length; i++) {
@@ -58,7 +58,7 @@ const getHighlightedRegion = (
 const getRegionHoverColor = (
     name: unknown,
     data: MapDataProp,
-    defaultMapColor = ''
+    defaultMapColor = '',
 ) => {
     if (data.length > 0 || name) {
         for (let i = 0; i < data.length; i++) {
@@ -76,7 +76,7 @@ const getRegionValue = (
     name: unknown,
     data: MapDataProp,
     suffix = '',
-    prefix = ''
+    prefix = '',
 ) => {
     if (data.length > 0 || name) {
         for (let i = 0; i < data.length; i++) {
@@ -116,7 +116,7 @@ const MapChart = (props: MapChartProps) => {
                                     data,
                                     mode === MODE_DARK
                                         ? twColor.gray['500']
-                                        : twColor.gray['100']
+                                        : twColor.gray['100'],
                                 )}
                                 stroke={
                                     mode === MODE_DARK
@@ -130,7 +130,7 @@ const MapChart = (props: MapChartProps) => {
                                             data,
                                             mode === MODE_DARK
                                                 ? twColor.gray['500']
-                                                : twColor.gray['100']
+                                                : twColor.gray['100'],
                                         ),
                                         outline: 'none',
                                     },
@@ -141,8 +141,8 @@ const MapChart = (props: MapChartProps) => {
                                             geoName,
                                             data,
                                             suffix,
-                                            prefix
-                                        )
+                                            prefix,
+                                        ),
                                     )
                                 }}
                                 onMouseLeave={() => {

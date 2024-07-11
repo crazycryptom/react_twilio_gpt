@@ -16,9 +16,7 @@ const { DatePickerRange } = DatePicker
 const DashboardHeader = () => {
     const dispatch = useAppDispatch()
 
-    const startDate = useAppSelector(
-        (state) => state.Dashboard.data.startDate
-    )
+    const startDate = useAppSelector((state) => state.Dashboard.data.startDate)
     const endDate = useAppSelector((state) => state.Dashboard.data.endDate)
 
     const handleDateChange = (value: [Date | null, Date | null]) => {

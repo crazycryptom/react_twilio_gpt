@@ -8,7 +8,7 @@ const ChatLog = ({ messages }: { messages: message[] }) => {
             <br />
             {messages?.map((message, i) => (
                 <div key={i} className="mb-2">
-                    <Card bodyClass='p-4 !important'>
+                    <Card bodyClass="p-4 !important">
                         <div className="mb-2 flex justify-end">
                             <div className="p-1 rounded bg-indigo-600 max-w-[80%] text-slate-100">
                                 Customer: {message.in}

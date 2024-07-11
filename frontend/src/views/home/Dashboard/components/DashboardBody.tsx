@@ -12,7 +12,7 @@ import ChatLogList from '../../OrderList/ChatLogList'
 
 const DashboardBody = () => {
     const dispatch = useAppDispatch()
-   
+
     const [isLoading, setIsLoading] = useState(false)
     const query = useQuery()
     const id = query.get('id')
@@ -53,7 +53,7 @@ const DashboardBody = () => {
             'August',
         ],
     }
-    
+
     return (
         <Container className="h-full">
             <div className="mb-4">

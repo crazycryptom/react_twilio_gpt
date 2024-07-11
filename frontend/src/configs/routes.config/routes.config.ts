@@ -5,6 +5,4 @@ import type { Routes } from '@/@types/routes'
 
 export const publicRoutes: Routes = [...authRoute]
 
-export const protectedRoutes = [
-    ...homeRoute,
-]
+export const protectedRoutes = [...homeRoute]

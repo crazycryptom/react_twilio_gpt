@@ -18,7 +18,7 @@ const OrderTableSearch = () => {
     const searchInput = useRef<HTMLInputElement>(null)
 
     const tableData = useAppSelector(
-        (state) => state.salesOrderList.data.tableData
+        (state) => state.salesOrderList.data.tableData,
     )
 
     const debounceFn = debounce(handleDebounceFn, 500)

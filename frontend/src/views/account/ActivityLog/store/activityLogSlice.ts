@@ -60,7 +60,7 @@ export const getLogs = createAsyncThunk(
             GetAccountLogDataRequest
         >(data)
         return response.data
-    }
+    },
 )
 
 export const filterLogs = createAsyncThunk(
@@ -71,7 +71,7 @@ export const filterLogs = createAsyncThunk(
             GetAccountLogDataRequest
         >(data)
         return response.data
-    }
+    },
 )
 
 const initialState: ActivityLogState = {

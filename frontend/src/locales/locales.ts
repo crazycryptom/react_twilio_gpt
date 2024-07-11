@@ -7,7 +7,7 @@ import appConfig from '@/configs/app.config'
 const resources = {
     en: {
         translation: en,
-    }
+    },
 }
 
 i18n.use(initReactI18next).init({

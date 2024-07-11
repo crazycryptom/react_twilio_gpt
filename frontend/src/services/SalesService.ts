@@ -1,8 +1,6 @@
 import ApiService from './ApiService'
 
-export async function apiGetDashboardData<
-    T extends Record<string, unknown>
->() {
+export async function apiGetDashboardData<T extends Record<string, unknown>>() {
     return ApiService.fetchData<T>({
         url: '/chat',
         method: 'get',
@@ -10,7 +8,7 @@ export async function apiGetDashboardData<
 }
 
 export async function apiGetSalesProducts<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/sales/products',
@@ -21,7 +19,7 @@ export async function apiGetSalesProducts<T, U extends Record<string, unknown>>(
 
 export async function apiDeleteSalesProducts<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: '/sales/products/delete',
@@ -31,7 +29,7 @@ export async function apiDeleteSalesProducts<
 }
 
 export async function apiGetSalesProduct<T, U extends Record<string, unknown>>(
-    params: U
+    params: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/sales/product',
@@ -41,7 +39,7 @@ export async function apiGetSalesProduct<T, U extends Record<string, unknown>>(
 }
 
 export async function apiPutSalesProduct<T, U extends Record<string, unknown>>(
-    data: U
+    data: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/sales/products/update',
@@ -52,7 +50,7 @@ export async function apiPutSalesProduct<T, U extends Record<string, unknown>>(
 
 export async function apiCreateSalesProduct<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: '/sales/products/create',
@@ -62,7 +60,7 @@ export async function apiCreateSalesProduct<
 }
 
 export async function apiGetSalesOrders<T, U extends Record<string, unknown>>(
-    params: U
+    params: U,
 ) {
     return ApiService.fetchData<T>({
         url: '/chat',
@@ -70,30 +68,26 @@ export async function apiGetSalesOrders<T, U extends Record<string, unknown>>(
         params,
     })
 }
-export async function apiGetTotalList<T>(
-) {
+export async function apiGetTotalList<T>() {
     return ApiService.fetchData<T>({
         url: '/chat',
         method: 'get',
     })
 }
 
-
-
 export async function apiDeleteSalesOrders<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(data: U) {
     return ApiService.fetchData<T>({
         url: `/chat/${data.id}`,
         method: 'delete',
-        
     })
 }
 
 export async function apiGetSalesOrderDetails<
     T,
-    U extends Record<string, unknown>
+    U extends Record<string, unknown>,
 >(params: U) {
     return ApiService.fetchData<T>({
         url: '/sales/orders-details',
